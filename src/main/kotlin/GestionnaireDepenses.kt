@@ -1,5 +1,8 @@
 package org.example
 
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+
 class GestionnaireDepenses {
     val depenses = mutableListOf<Depense>()
 
@@ -88,6 +91,8 @@ class GestionnaireDepenses {
 
     fun choixDate() : String{
         val regex = """[0-9]{2}/[0-9]{2}/[0-9]{4}""".toRegex()
+        //val dateActuelle = LocalDate.now().format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+        //println("La date actuelle est : $dateActuelle")
 
         while (true) {
             println("Entrez la date en format jj/mm/aaaa")
