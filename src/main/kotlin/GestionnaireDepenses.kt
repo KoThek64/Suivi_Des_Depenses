@@ -16,10 +16,17 @@ class GestionnaireDepenses {
             println("Le format du montant que vous avez donné n'est pas correct")
             return trouveMontant()
         }
-        val result = montant.toDouble()
-        if (result <= 0.0){
-            println("La valeur doit être positive")
-            trouveMontant()
+        var result = montant.toDouble()
+        var bool = false
+        while (bool == false){
+            if (result <= 0){
+                println("La valeur donnée n'est pas positive")
+                println("Entrez le montant")
+                bool = false
+                result = readLine()!!.toDouble()
+            } else {
+                bool = true
+            }
         }
         return result
     }
