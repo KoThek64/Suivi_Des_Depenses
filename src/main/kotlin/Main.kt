@@ -15,8 +15,8 @@ fun main() {
         when (readLine()){
             "1" -> {
                 val montant = gestion.trouveMontant()
-                println("Entrez la catégorie")
-                val categorie = readLine()!!
+                println("Choisissez la catégorie")
+                val categorie = gestion.choixCategorie()
                 println("Entrez le jour (jj)")
                 val jour = readLine()!!
                 println("Entrez le mois (mm)")

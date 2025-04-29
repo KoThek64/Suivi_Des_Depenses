@@ -31,6 +31,61 @@ class GestionnaireDepenses {
         return result
     }
 
+    fun choixCategorie() : String{
+        val logement = "Logement"
+        val alimentationResto = "Alimentation / Restaurant"
+        val achatShopping = "Achat / Shopping"
+        val voitureTransport = "Voiture / Transport"
+        val retraitChequeVirement = "Retrait / Chèque / Virement"
+        val loisirsSorties = "Loisirs / Sorties"
+        val abonnement = "Abonnement"
+        val banque = "Frais bancaires"
+        val divers = "Divers"
+        val esthethiqueSoins = "Esthethique / Soins"
+        val impotsTaxes = "Impots / Taxes"
+        val sante = "Santé"
+        val scolariteEnfant = "Scolarité / Enfants"
+
+        var categorie : String = ""
+
+        println("\nCHOIX CATÉGORIE")
+        println("1  - $logement")
+        println("2  - $alimentationResto")
+        println("3  - $achatShopping")
+        println("4  - $voitureTransport")
+        println("5  - $retraitChequeVirement")
+        println("6  - $loisirsSorties")
+        println("7  - $abonnement")
+        println("8  - $banque")
+        println("9  - $esthethiqueSoins")
+        println("10 - $impotsTaxes")
+        println("11 - $sante")
+        println("12 - $scolariteEnfant")
+        println("13 - $divers")
+
+        when(readLine()!!){
+            "1" -> categorie = logement
+            "2" -> categorie = alimentationResto
+            "3" -> categorie = achatShopping
+            "4" -> categorie = voitureTransport
+            "5" -> categorie = retraitChequeVirement
+            "6" -> categorie = loisirsSorties
+            "7" -> categorie = abonnement
+            "8" -> categorie = banque
+            "9" -> categorie = esthethiqueSoins
+            "10" -> categorie = impotsTaxes
+            "11" -> categorie = sante
+            "12" -> categorie = scolariteEnfant
+            "13" -> categorie = divers
+
+            else -> {
+                println("Choix invalide veuillez recommencer")
+                return choixCategorie()
+            }
+            }
+        return categorie
+    }
+
     fun afficherDepense(){
         if (depenses.isEmpty()){
             println("Aucune dépense enregistrée")
