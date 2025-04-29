@@ -46,44 +46,59 @@ class GestionnaireDepenses {
         val sante = "Santé"
         val scolariteEnfant = "Scolarité / Enfants"
 
-        var categorie : String = ""
+        val categorie : String = ""
 
-        println("\nCHOIX CATÉGORIE")
-        println("1  - $logement")
-        println("2  - $alimentationResto")
-        println("3  - $achatShopping")
-        println("4  - $voitureTransport")
-        println("5  - $retraitChequeVirement")
-        println("6  - $loisirsSorties")
-        println("7  - $abonnement")
-        println("8  - $banque")
-        println("9  - $esthethiqueSoins")
-        println("10 - $impotsTaxes")
-        println("11 - $sante")
-        println("12 - $scolariteEnfant")
-        println("13 - $divers")
+        while (true) {
+            println("\nCHOIX CATÉGORIE")
+            println("1  - $logement")
+            println("2  - $alimentationResto")
+            println("3  - $achatShopping")
+            println("4  - $voitureTransport")
+            println("5  - $retraitChequeVirement")
+            println("6  - $loisirsSorties")
+            println("7  - $abonnement")
+            println("8  - $banque")
+            println("9  - $esthethiqueSoins")
+            println("10 - $impotsTaxes")
+            println("11 - $sante")
+            println("12 - $scolariteEnfant")
+            println("13 - $divers")
 
-        when(readLine()!!){
-            "1" -> categorie = logement
-            "2" -> categorie = alimentationResto
-            "3" -> categorie = achatShopping
-            "4" -> categorie = voitureTransport
-            "5" -> categorie = retraitChequeVirement
-            "6" -> categorie = loisirsSorties
-            "7" -> categorie = abonnement
-            "8" -> categorie = banque
-            "9" -> categorie = esthethiqueSoins
-            "10" -> categorie = impotsTaxes
-            "11" -> categorie = sante
-            "12" -> categorie = scolariteEnfant
-            "13" -> categorie = divers
+            when(readLine()!!) {
+                "1" -> return logement
+                "2" -> return alimentationResto
+                "3" -> return achatShopping
+                "4" -> return voitureTransport
+                "5" -> return retraitChequeVirement
+                "6" -> return loisirsSorties
+                "7" -> return abonnement
+                "8" -> return banque
+                "9" -> return esthethiqueSoins
+                "10" -> return impotsTaxes
+                "11" -> return sante
+                "12" -> return scolariteEnfant
+                "13" -> return divers
 
-            else -> {
-                println("Choix invalide veuillez recommencer")
-                return choixCategorie()
+                else -> {
+                    println("Choix invalide veuillez recommencer")
+                }
             }
+        }
+    }
+
+    fun choixDate() : String{
+        val regex = """[0-9]{2}/[0-9]{2}/[0-9]{4}""".toRegex()
+
+        while (true) {
+            println("Entrez la date en format jj/mm/aaaa")
+            val date = readLine()!!
+
+            if (regex.matches(date)){
+                return date
+            } else {
+                println("Le format de la date n'est pas correct, veuillez recommencer")
             }
-        return categorie
+        }
     }
 
     fun afficherDepense(){

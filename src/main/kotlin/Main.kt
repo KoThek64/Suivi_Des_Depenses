@@ -17,13 +17,7 @@ fun main() {
                 val montant = gestion.trouveMontant()
                 println("Choisissez la catégorie")
                 val categorie = gestion.choixCategorie()
-                println("Entrez le jour (jj)")
-                val jour = readLine()!!
-                println("Entrez le mois (mm)")
-                val mois = readLine()!!
-                println("Entrez l'année (aaaa)")
-                val annee = readLine()!!
-                val date = "$jour/$mois/$annee"
+                val date = gestion.choixDate()
                 gestion.ajouterDepense(Depense(montant, categorie, date))
             }
 
