@@ -51,8 +51,6 @@ class GestionnaireDepenses {
         val sante = "Santé"
         val scolariteEnfant = "Scolarité / Enfants"
 
-        val categorie : String = ""
-
         while (true) {
             println("\nCHOIX CATÉGORIE")
             println("1  - $logement")
