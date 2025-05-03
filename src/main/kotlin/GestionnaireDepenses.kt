@@ -1,5 +1,10 @@
 package org.example
 
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeParseException
+import java.time.format.ResolverStyle
+
 class GestionnaireDepenses {
     val depenses = mutableListOf<Depense>()
 
@@ -87,18 +92,17 @@ class GestionnaireDepenses {
     }
 
     fun choixDate() : String{
-        val regex = """[0-9]{2}/[0-9]{2}/[0-9]{4}""".toRegex()
-        //val dateActuelle = LocalDate.now().format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"))
-        //println("La date actuelle est : $dateActuelle")
+        val formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(ResolverStyle.STRICT)
 
         while (true) {
             println("Entrez la date en format jj/mm/aaaa")
             val date = readLine()!!
 
-            if (regex.matches(date)){
+            try {
+                LocalDate.parse(date, formatter)
                 return date
-            } else {
-                println("Le format de la date n'est pas correct, veuillez recommencer")
+            } catch (e : DateTimeParseException) {
+                println("La date saisie n'est pas valide veuillez recommencer")
             }
         }
     }
