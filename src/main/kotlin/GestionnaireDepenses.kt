@@ -17,7 +17,7 @@ class GestionnaireDepenses {
         val montant = readln()
         try {
             montant.toDouble()
-        } catch (e: NumberFormatException) {
+        } catch (_: NumberFormatException) {
             println("Le format du montant que vous avez donné n'est pas correct")
             return trouveMontant()
         }
@@ -99,7 +99,7 @@ class GestionnaireDepenses {
             try {
                 LocalDate.parse(date, formatter)
                 return date
-            } catch (e : DateTimeParseException) {
+            } catch (_ : DateTimeParseException) {
                 println("La date saisie n'est pas valide veuillez recommencer")
             }
         }
@@ -123,8 +123,21 @@ class GestionnaireDepenses {
         return total
     }
 
-    fun calculerTotalParCategorie(cat : String) : Double {
-        return depenses.filter { it.categorie == cat }.sumOf { it.montant }
+    fun calculerTotalParCategorie() : Double {
+        if (depenses.isEmpty()){
+            println("Aucune dépense enregistrée")
+            return 0.0
+        }
+        val cat = choixCategorie()
+        var total = 0.0
+        for (i in 0 until depenses.size){
+            if (cat == depenses[i].categorie){
+                total += depenses[i].montant
+            }
+        }
+
+        println("Montant des dépenses dans la catégorie $cat : $total")
+        return total
     }
 
     fun supprimerDepense(){
@@ -136,8 +149,9 @@ class GestionnaireDepenses {
         afficherDepense()
         val mont = readln().toDouble()
         val type = choixCategorie()
+        val date = choixDate()
         for (i in 0 until depenses.size){
-            if (mont == depenses[i].montant && type == depenses[i].categorie){
+            if (mont == depenses[i].montant && type == depenses[i].categorie && date == depenses[i].date){
                 depenses.remove(depenses[i])
             } else {
                 println("La dépense que vous avez choisi n'existe pas")

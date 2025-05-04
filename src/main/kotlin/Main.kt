@@ -30,9 +30,7 @@ fun main() {
             }
 
             "4" ->{
-                println("Entrez la catégorie")
-                val categorie = readln()
-                println("Total des dépenses dans la catégorie $categorie : ${gestion.calculerTotalParCategorie(categorie)}")
+                gestion.calculerTotalParCategorie()
             }
 
             "5" -> {
