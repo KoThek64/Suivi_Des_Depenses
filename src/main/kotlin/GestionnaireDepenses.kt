@@ -147,14 +147,19 @@ class GestionnaireDepenses {
         }
         println("\nChoisissez une dépense à supprimer")
         afficherDepense()
+        println("Entrez son montant")
         val mont = readln().toDouble()
+        println("Entrez sa categorie")
         val type = choixCategorie()
+        println("Entrez la date de la dépense")
         val date = choixDate()
         for (i in 0 until depenses.size){
             if (mont == depenses[i].montant && type == depenses[i].categorie && date == depenses[i].date){
                 depenses.remove(depenses[i])
+                return
             } else {
                 println("La dépense que vous avez choisi n'existe pas")
+                return supprimerDepense()
             }
         }
     }
