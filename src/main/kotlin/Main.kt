@@ -31,19 +31,12 @@ fun main() {
 
             "4" ->{
                 println("Entrez la catégorie")
-                val categorie = readLine()!!
+                val categorie = readln()
                 println("Total des dépenses dans la catégorie $categorie : ${gestion.calculerTotalParCategorie(categorie)}")
             }
 
             "5" -> {
-                println("Entrez le montant de la dépenses à supprimer")
-                val montant = readLine()!!.toDouble()
-                println("Entrez sa catégorie")
-                val categorie = readLine()!!
-                println("Entrez la date de la dépense (jj/mm/aaaa)")
-                val date = readLine()!!
-                val depenseASupprimer = Depense(montant, categorie, date)
-                gestion.supprimerDepense(depenseASupprimer)
+                gestion.supprimerDepense()
             }
 
             "6" -> {

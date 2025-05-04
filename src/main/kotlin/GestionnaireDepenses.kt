@@ -13,8 +13,8 @@ class GestionnaireDepenses {
     }
 
     fun trouveMontant() :  Double{
-        println("Entrez le montant")
-        val montant = readLine()!!
+        println("\nEntrez le montant")
+        val montant = readln()
         try {
             montant.toDouble()
         } catch (e: NumberFormatException) {
@@ -26,9 +26,9 @@ class GestionnaireDepenses {
         while (bool == false){
             if (result <= 0){
                 println("La valeur donnée n'est pas positive")
-                println("Entrez le montant")
+                println("\nEntrez le montant")
                 bool = false
-                result = readLine()!!.toDouble()
+                result = readln().toDouble()
             } else {
                 bool = true
             }
@@ -67,7 +67,7 @@ class GestionnaireDepenses {
             println("12 - $scolariteEnfant")
             println("13 - $divers")
 
-            when(readLine()!!) {
+            when(readln()) {
                 "1" -> return logement
                 "2" -> return alimentationResto
                 "3" -> return achatShopping
@@ -93,8 +93,8 @@ class GestionnaireDepenses {
         val formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(ResolverStyle.STRICT)
 
         while (true) {
-            println("Entrez la date en format jj/mm/aaaa")
-            val date = readLine()!!
+            println("\nEntrez la date en format jj/mm/aaaa")
+            val date = readln()
 
             try {
                 LocalDate.parse(date, formatter)
@@ -107,7 +107,7 @@ class GestionnaireDepenses {
 
     fun afficherDepense(){
         if (depenses.isEmpty()){
-            println("Aucune dépense enregistrée")
+            println("\nAucune dépense enregistrée")
         } else {
             for (i in 0 until depenses.size){
                 println("Montant : ${depenses[i].montant}, Catégorie : ${depenses[i].categorie}, Date: ${depenses[i].date}")
@@ -127,8 +127,22 @@ class GestionnaireDepenses {
         return depenses.filter { it.categorie == cat }.sumOf { it.montant }
     }
 
-    fun supprimerDepense(dep : Depense){
-        depenses.remove(dep)
+    fun supprimerDepense(){
+        if (depenses.isEmpty()){
+            println("\nAucunes dépense n'a été enregistrée")
+            return
+        }
+        println("\nChoisissez une dépense à supprimer")
+        afficherDepense()
+        val mont = readln().toDouble()
+        val type = choixCategorie()
+        for (i in 0 until depenses.size){
+            if (mont == depenses[i].montant && type == depenses[i].categorie){
+                depenses.remove(depenses[i])
+            } else {
+                println("La dépense que vous avez choisi n'existe pas")
+            }
+        }
     }
 
 
