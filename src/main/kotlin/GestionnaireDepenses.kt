@@ -116,6 +116,10 @@ class GestionnaireDepenses {
     }
 
     fun calculerTotal() : Double {
+				if (depenses.isEmpty()){
+            println("Aucune dépense enregistrée")
+            return 0.0
+        }
         var total = 0.0
         for (i in 0 until depenses.size){
             total += depenses[i].montant
