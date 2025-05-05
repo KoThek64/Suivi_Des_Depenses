@@ -116,7 +116,7 @@ class GestionnaireDepenses {
     }
 
     fun calculerTotal() : Double {
-if (depenses.isEmpty()){
+	if (depenses.isEmpty()){
             println("Aucune dépense enregistrée")
             return 0.0
         }
