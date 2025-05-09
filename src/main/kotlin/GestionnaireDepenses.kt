@@ -8,6 +8,22 @@ import java.time.format.ResolverStyle
 class GestionnaireDepenses {
     val depenses = mutableListOf<Depense>()
 
+    val categories = listOf(
+        "Logement",
+        "Alimentation / Restaurant",
+        "Achat / Shopping",
+        "Voiture / Transport",
+        "Retrait / Chèque / Virement",
+        "Loisirs / Sorties",
+        "Abonnement",
+        "Frais bancaires",
+        "Esthethique / Soins",
+        "Impots / Taxes",
+        "Santé",
+        "Scolarité / Enfants",
+        "Divers"
+    )
+
     fun ajouterDepense(dep : Depense){
         depenses.add(dep)
     }
