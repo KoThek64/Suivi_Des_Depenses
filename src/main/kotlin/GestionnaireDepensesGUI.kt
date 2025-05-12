@@ -185,7 +185,38 @@ class GestionnaireDepensesGUI : Application() {
         afficherInfo("Total des dépenses :  $total €")
     }
 
-    
+    private fun afficherTotalParCategorie() {
+        val dialog = Stage()
+        dialog.title = "Total par catégorie"
+
+        val vbox = VBox(10.0)
+        vbox.padding = Insets(10.0)
+
+        val comboCategorie = ComboBox<String>()
+        comboCategorie.items.addAll(gestion.categories)
+
+        val btnCalculer = Button("Calculer")
+        btnCalculer.setOnAction {
+            val categorie = comboCategorie.value
+            if (categorie != null) {
+                var total = 0.0
+                gestion.depenses.forEach { depenses ->
+                    if (depenses.categorie == categorie) {
+                        total += depenses.montant
+                    }
+                }
+                afficherInfo("Total pour la catagorie $categorie : $total €")
+                dialog.close()
+            }
+        }
+
+        vbox.children.addAll(Label("Catégorie : "), comboCategorie, btnCalculer)
+
+        dialog.scene = Scene(vbox)
+        dialog.showAndWait()
+    }
+
+
 
 
 
