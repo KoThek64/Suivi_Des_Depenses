@@ -46,19 +46,108 @@ class GestionnaireDepensesGUI : Application() {
         tableView.columns.addAll(montantCol, categorieCol, dateCol)
         tableView.columnResizePolicy = TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS
 
-        val btnAjouter = Button("Ajouter une dépense")
-        val btnSupprimer = Button("Supprimer une dépense")
-        val btnTotal = Button("Afficher le total")
-        val btnTotalParCat = Button("Total par catégorie")
-        val btnQuitter = Button("Quitter")
+        val btnAjouter = Button("Ajouter une dépense").apply {
+            prefWidth = 160.0
+            style = """
+                |-fx-background-color: #4CAF50;
+                |-fx-text-fill: white;
+                |-fx-font-weight: bold;
+                |-fx-padding: 10px;
+                |-fx-background-radius: 5px;
+                |"""
+                .trimMargin()
+            setOnMouseEntered {
+                style += "-fx-opacity: 0.9;"
+            }
+            setOnMouseExited {
+                style = style.replace("-fx-opacity: 0.9;", "")
+            }
+        }
 
-        val buttonBox = VBox(10.0)
-        buttonBox.children.addAll(btnAjouter, btnSupprimer, btnTotal, btnTotalParCat, btnQuitter)
+        val btnSupprimer = Button("Supprimer une dépense").apply {
+            prefWidth = 160.0
+            style = """
+                -fx-background-color: #f44336;
+                -fx-text-fill: white;
+                -fx-font-weight: bold;
+                -fx-padding: 10px;
+                -fx-background-radius: 5px;
+                """
+            setOnMouseEntered {
+                style += "-fx-opacity: 0.9;"
+            }
+            setOnMouseExited {
+                style = style.replace("-fx-opacity: 0.9;", "")
+            }
+        }
 
-        val root = BorderPane()
-        root.left = buttonBox
-        root.center = tableView
-        BorderPane.setMargin(tableView, Insets(10.0))
+        val btnTotal = Button("Afficher le total").apply {
+            prefWidth = 160.0
+            style = """
+                -fx-background-color: #2196F3;
+                -fx-text-fill: white;
+                -fx-font-weight: bold;
+                -fx-padding: 10px;
+                -fx-background-radius: 5px;
+                """
+            setOnMouseEntered {
+                style += "-fx-opacity: 0.9;"
+            }
+            setOnMouseExited {
+                style = style.replace("-fx-opacity: 0.9;", "")
+            }
+        }
+
+        val btnTotalParCat = Button("Total par catégorie").apply {
+            prefWidth = 160.0
+            style = """
+                -fx-background-color: #FF9800;
+                -fx-text-fill: white;
+                -fx-font-weight: bold;
+                -fx-padding: 10px;
+                -fx-background-radius: 5px;
+                """
+            setOnMouseEntered {
+                style += "-fx-opacity: 0.9;"
+            }
+            setOnMouseExited {
+                style = style.replace("-fx-opacity: 0.9;", "")
+            }
+        }
+
+        val btnQuitter = Button("Quitter").apply {
+            prefWidth = 160.0
+            style = """
+                -fx-background-color: #9E9E9E;
+                -fx-text-fill: white;
+                -fx-font-weight: bold;
+                -fx-padding: 10px;
+                -fx-background-radius: 5px;
+                """
+            setOnMouseEntered {
+                style += "-fx-opacity: 0.9;"
+            }
+            setOnMouseExited {
+                style = style.replace("-fx-opacity: 0.9;", "")
+            }
+        }
+
+        val buttonBox = VBox(10.0).apply {
+            children.addAll(btnAjouter, btnSupprimer, btnTotal, btnTotalParCat, btnQuitter)
+            style = """
+                -fx-padding: 15;
+                -fx-alignment: CENTER;
+                """
+        }
+
+        val root = BorderPane().apply {
+            left = buttonBox
+            center = tableView
+            style = "-fx-background-color: #f5f5f5;"
+            BorderPane.setMargin(tableView, Insets(10.0))
+            BorderPane.setMargin(buttonBox, Insets(0.0, 10.0, 0.0, 10.0))
+        }
+
 
         btnAjouter.setOnAction { afficherDialogueAjout() }
         btnSupprimer.setOnAction { supprimerDepenseSelectionnee() }
