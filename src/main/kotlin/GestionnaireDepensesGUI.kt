@@ -247,7 +247,7 @@ class GestionnaireDepensesGUI : Application() {
     private fun supprimerDepenseSelectionnee(){
         val selection = tableView.selectionModel.selectedItem
         if (selection != null) {
-            gestion.supprimerDepense()
+            gestion.depenses.remove(selection)
             mettreAJourTableau()
             afficherInfo("Dépense supprimée avec succès")
         } else {
