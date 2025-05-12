@@ -180,6 +180,13 @@ class GestionnaireDepensesGUI : Application() {
         }
     }
 
+    private fun afficherTotal() {
+        val total = gestion.calculerTotal()
+        afficherInfo("Total des dépenses :  $total €")
+    }
+
+    
+
 
 
 
