@@ -88,6 +88,31 @@ class GestionnaireDepensesGUI : Application() {
 
     }
 
+
+
+    private fun mettreAJourTableau() {
+        tableView.items.clear()
+        tableView.items.addAll(gestion.depenses)
+    }
+
+    private fun afficherInfo(message : String){
+        val alert = Alert(Alert.AlertType.INFORMATION)
+        alert.title = "Information"
+        alert.headerText = null
+        alert.contentText = message
+        alert.showAndWait()
+    }
+
+    private fun afficherErreur(message : String){
+        val alert = Alert(Alert.AlertType.ERROR)
+        alert.title = "Erreur"
+        alert.headerText = null
+        alert.contentText = message
+        alert.showAndWait()
+    }
+
+
+
     private fun afficherDialogueAjout(){
         val dialog = Stage()
         dialog.title = "Ajouter une dépense"
@@ -144,18 +169,18 @@ class GestionnaireDepensesGUI : Application() {
         dialog.showAndWait()
     }
 
-    private fun mettreAJourTableau() {
-        tableView.items.clear()
-        tableView.items.addAll(gestion.depenses)
+    private fun supprimerDepenseSelectionnee(){
+        val selection = tableView.selectionModel.selectedItem
+        if (selection != null) {
+            gestion.supprimerDepense()
+            mettreAJourTableau()
+            afficherInfo("Dépense supprimée avec succès")
+        } else {
+            afficherErreur("Veuillez sélectionner une dépense avant de la supprimer")
+        }
     }
 
-    private fun afficherErreur(message : String){
-        val alert = Alert(Alert.AlertType.ERROR)
-        alert.title = "Erreur"
-        alert.headerText = null
-        alert.contentText = message
-        alert.showAndWait()
-    }
+
 
 
 }
