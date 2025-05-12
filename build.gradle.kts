@@ -11,7 +11,14 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+
+    implementation("org.openjfx:javafx-base:24.0.1")
+    implementation("org.openjfx:javafx-controls:24.0.1")
+    implementation("org.openjfx:javafx-graphics:24.0.1")
+    implementation("org.openjfx:javafx-fxml:24.0.1")
+
 }
+
 
 tasks.test {
     useJUnitPlatform()
