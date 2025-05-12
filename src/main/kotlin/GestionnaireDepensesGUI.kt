@@ -18,8 +18,8 @@ class GestionnaireDepensesGUI : Application() {
     private val gestion = GestionnaireDepenses()
     private val tableView = TableView<Depense>()
 
-    override fun start(stage : Stage?) {
-        stage?.title = "Gestionnaire des dépenses"
+    override fun start(stage : Stage) {
+        stage.title = "Gestionnaire des dépenses"
 
         val montantCol = TableColumn<Depense, Number>("Montant")
         montantCol.setCellValueFactory { SimpleDoubleProperty(it.value.montant) }
@@ -44,7 +44,7 @@ class GestionnaireDepensesGUI : Application() {
         }
 
         tableView.columns.addAll(montantCol, categorieCol, dateCol)
-        tableView.columnResizePolicy = TableView.CONSTRAINED_RESIZE_POLICY
+        tableView.columnResizePolicy = TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS
 
         val btnAjouter = Button("Ajouter une dépense")
         val btnSupprimer = Button("Supprimer une dépense")
@@ -60,29 +60,15 @@ class GestionnaireDepensesGUI : Application() {
         root.center = tableView
         BorderPane.setMargin(tableView, Insets(10.0))
 
-        btnAjouter.setOnAction {
-            val montant = gestion.trouveMontant()
-            println("Choisissez la catégorie")
-            val categorie = gestion.choixCategorie()
-            val date = gestion.choixDate()
-            gestion.ajouterDepense(Depense(montant, categorie, date))
-        }
-        btnSupprimer.setOnAction {
-            gestion.supprimerDepense()
-        }
-        btnTotal.setOnAction {
-            println("Le total de toutes les dépenses est de ${gestion.calculerTotal()}")
-        }
-        btnTotalParCat.setOnAction {
-            gestion.calculerTotalParCategorie()
-        }
-        btnQuitter.setOnAction {
-            stage?.close()
-        }
+        btnAjouter.setOnAction { afficherDialogueAjout() }
+        btnSupprimer.setOnAction { supprimerDepenseSelectionnee() }
+        btnTotal.setOnAction { afficherTotal() }
+        btnTotalParCat.setOnAction { afficherTotalParCategorie() }
+        btnQuitter.setOnAction { stage.close() }
 
         val scene = Scene(root, 800.0, 600.0)
-        stage?.scene = scene
-        stage?.show()
+        stage.scene = scene
+        stage.show()
 
         mettreAJourTableau()
 
@@ -215,11 +201,6 @@ class GestionnaireDepensesGUI : Application() {
         dialog.scene = Scene(vbox)
         dialog.showAndWait()
     }
-
-
-
-
-
 
 }
 
