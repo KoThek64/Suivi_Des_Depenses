@@ -6,8 +6,19 @@ Application mobile développée en Kotlin permettant de suivre et visualiser ses
 
 ## 🖼️ Aperçu de l'application
 
-![Capture d'écran 1](assets/screenshot1.png)  
+### Version Terminal
+#### Screen 1
+![Capture d'écran 1](assets/screenshot1.png)
+#### Screen 2
 ![Capture d'écran 2](assets/screenshot2.png)
+
+### Version Application
+#### Screen 1
+![Capture d'écran 1](assets/screenshot3.png)  
+#### Screen 2
+![Capture d'écran 2](assets/screenshot4.png)
+#### Screen 3
+![Capture d'écran 1](assets/screenshot5.png)
 
 ---
 
@@ -32,7 +43,7 @@ Application mobile développée en Kotlin permettant de suivre et visualiser ses
 
 1. Clonez le dépôt :
    ```bash
-   git clone https://github.com/votre-utilisateur/Suivi_Des_Depenses.git
+   git clone https://github.com/KoThek64/Suivi_Des_Depenses.git
 2. Ouvrez le projet dans Android Studio.
 
 3. Cliquez sur Run ▶️ pour lancer l’application sur un émulateur ou un appareil Android.
