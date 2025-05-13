@@ -6,11 +6,15 @@ Application mobile développée en Kotlin permettant de suivre et visualiser ses
 
 ## 🖼️ Aperçu de l'application
 
+---
+
 ### Version Terminal
 #### Screen 1
 ![Capture d'écran 1](assets/screenshot1.png)
 #### Screen 2
 ![Capture d'écran 2](assets/screenshot2.png)
+
+---
 
 ### Version Application
 #### Screen 1
