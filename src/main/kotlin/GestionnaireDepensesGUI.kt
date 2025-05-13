@@ -8,6 +8,7 @@ import javafx.geometry.Pos
 import javafx.scene.Scene
 import javafx.scene.control.*
 import javafx.scene.layout.*
+import javafx.stage.FileChooser
 import javafx.stage.Stage
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -19,6 +20,36 @@ class GestionnaireDepensesGUI : Application() {
     private val tableView = TableView<Depense>()
 
     override fun start(stage : Stage) {
+        val confirmation = Alert(Alert.AlertType.CONFIRMATION).apply {
+            title = "Importation des données"
+            headerText = "Importation des dépenses"
+            contentText = "Voulez-vous importer des dépenses depuis un fichier ?"
+
+            buttonTypes.clear()  // Effacer les boutons par défaut
+            buttonTypes.addAll(
+                ButtonType("Oui", ButtonBar.ButtonData.YES),
+                ButtonType("Non", ButtonBar.ButtonData.NO)
+            )
+        }
+
+        val resultat = confirmation.showAndWait()
+
+        if (resultat.isPresent && resultat.get().buttonData == ButtonBar.ButtonData.YES) {
+            val fileChooser = FileChooser().apply {
+                extensionFilters.add(FileChooser.ExtensionFilter("Fichiers CSV", "*.csv"))
+            }
+
+            val selectedFile = fileChooser.showOpenDialog(stage)
+            if (selectedFile != null) {
+                try {
+                    gestion.importerCSV(selectedFile.absolutePath)
+                    afficherInfo("Importation des dépenses réussie")
+                } catch (e : Exception) {
+                    afficherErreur("Erreur lors de l'importation des dépenses : ${e.message}")
+                }
+            }
+        }
+
         stage.title = "Gestionnaire des dépenses"
 
         val montantCol = TableColumn<Depense, Number>("Montant")

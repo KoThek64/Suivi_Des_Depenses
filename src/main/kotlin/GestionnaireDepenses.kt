@@ -1,5 +1,6 @@
 package org.example
 
+import java.io.File
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
@@ -176,6 +177,27 @@ class GestionnaireDepenses {
             } else {
                 println("La dépense que vous avez choisi n'existe pas")
                 return supprimerDepense()
+            }
+        }
+    }
+
+    fun importerCSV(fichier : String) {
+        File(fichier).useLines { lines ->
+            lines.drop(1).forEach { line ->
+                val elements = line.split(";")
+                if (elements.size >= 3) {
+                    try {
+                        val montant = elements[0].toDouble()
+                        val categorie = elements[1]
+                        val date = elements[2]
+
+                        if (categories.contains(categorie)) {
+                            ajouterDepense(Depense(montant, categorie, date))
+                        }
+                    } catch (e: NumberFormatException) {
+                        println("Erreur dans le fichier CSV : le montant ${elements[0]} n'est pas un nombre valide")
+                    }
+                }
             }
         }
     }
