@@ -31,7 +31,7 @@ Application mobile développée en Kotlin permettant de suivre et visualiser ses
 - 🧾 Ajout et modification de dépenses
 - 📅 Tri par dates (jj/mm/yyyy)
 - 🔍 Filtrage par catégories
-- 💾 Sauvegarde locale des données (bientôt)
+- 💾 Sauvegarde locale des données
 
 ---
 
