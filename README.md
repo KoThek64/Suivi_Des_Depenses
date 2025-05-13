@@ -48,9 +48,11 @@ Application mobile développée en Kotlin permettant de suivre et visualiser ses
 1. Clonez le dépôt :
    ```bash
    git clone https://github.com/KoThek64/Suivi_Des_Depenses.git
-2. Ouvrez le projet dans Android Studio.
+2. Ouvrez le projet dans IntelliJ IDEA.
 
-3. Cliquez sur Run ▶️ pour lancer l’application sur un émulateur ou un appareil Android.
+3. Sélectionnez le fichier GestionnaireDepensesGUIKt ou le MainKt en haut à droite de l'écran avant de lancer
+
+4. Cliquez sur Run ▶️ pour lancer l’application, elle s'affichera soit dans le terminal si vous sélectionnez MainKt, soit dans une nouvelle fenêtre si vous avez selectionné GestionnaireDepensesGUIKt.
 
 ---
 
