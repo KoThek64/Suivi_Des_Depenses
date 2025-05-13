@@ -146,6 +146,24 @@ class GestionnaireDepensesGUI : Application() {
             }
         }
 
+        val btnSauvegarder = Button("Sauvegarder en CSV").apply {
+            prefWidth = 160.0
+            style = """
+                -fx-background-color: #673AB7;
+                -fx-text-fill: white;
+                -fx-font-weight: bold;
+                -fx-padding: 10px;
+                -fx-background-radius: 5px;
+                """
+            setOnMouseEntered {
+                style += "-fx-opacity: 0.9;"
+            }
+            setOnMouseExited {
+                style = style.replace("-fx-opacity: 0.9;", "")
+            }
+        }
+
+
         val btnQuitter = Button("Quitter").apply {
             prefWidth = 160.0
             style = """
@@ -164,7 +182,7 @@ class GestionnaireDepensesGUI : Application() {
         }
 
         val buttonBox = VBox(10.0).apply {
-            children.addAll(btnAjouter, btnSupprimer, btnTotal, btnTotalParCat, btnQuitter)
+            children.addAll(btnAjouter, btnSupprimer, btnTotal, btnTotalParCat,btnSauvegarder, btnQuitter)
             style = """
                 -fx-padding: 15;
                 -fx-alignment: CENTER;
@@ -184,6 +202,26 @@ class GestionnaireDepensesGUI : Application() {
         btnSupprimer.setOnAction { supprimerDepenseSelectionnee() }
         btnTotal.setOnAction { afficherTotal() }
         btnTotalParCat.setOnAction { afficherTotalParCategorie() }
+        btnSauvegarder.setOnAction {
+            val jour = LocalDate.now().dayOfMonth
+            val mois = LocalDate.now().monthValue
+            val annee = LocalDate.now().year
+            val fileChooser = FileChooser().apply {
+                title = "Sauvegarder les dépenses"
+                extensionFilters.add(FileChooser.ExtensionFilter("Fichiers CSV", "*.csv"))
+                initialFileName = "$jour-$mois-$annee.csv"
+            }
+
+            val file = fileChooser.showSaveDialog(stage)
+            if (file != null) {
+                try {
+                    gestion.sauvegarderVersCSV(file.absolutePath)
+                    afficherInfo("Sauvegarde effectuée avec succès")
+                } catch (e : Exception) {
+                    afficherErreur("Erreur lors de la sauvegarde des dépenses : ${e.message}")
+                }
+            }
+        }
         btnQuitter.setOnAction { stage.close() }
 
         val scene = Scene(root, 800.0, 600.0)

@@ -202,5 +202,14 @@ class GestionnaireDepenses {
         }
     }
 
+    fun sauvegarderVersCSV(fichier : String) {
+        File(fichier).printWriter().use { writer ->
+            writer.println("Montant;Categorie;Date")
+            depenses.forEach { dep ->
+                writer.println("${dep.montant};${dep.categorie};${dep.date}")
+            }
+        }
+    }
+
 
 }
