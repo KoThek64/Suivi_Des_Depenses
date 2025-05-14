@@ -181,6 +181,14 @@ class GestionnaireDepenses {
         }
     }
 
+    fun sauvegarderFichier(){
+        val jour = LocalDate.now().dayOfMonth
+        val mois = LocalDate.now().monthValue
+        val annee = LocalDate.now().year
+        val fichier = "$jour-$mois-$annee.csv"
+        sauvegarderVersCSV(fichier)
+    }
+
     fun importerCSV(fichier : String) {
         File(fichier).useLines { lines ->
             lines.drop(1).forEach { line ->
