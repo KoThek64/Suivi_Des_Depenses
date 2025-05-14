@@ -71,19 +71,17 @@ Suivi_Des_Depenses/
 ├── .kotlin/
 ├── assets/
 │   ├── screenshot1.png
-│   └── screenshot2.png
+│   ├── screenshot2.png
+│   └── ...
 ├── build/
 ├── gradle/
 ├── src/
-│   ├── main/
-│   │   └── kotlin/
-│   │       ├── Depense.kt
-│   │       ├── GestionnaireDepenses.kt
-│   │       ├── GestionnaireDepensesGUI.kt
-│   │       └── Main.kt
-│   └── test/
+│   └── main/
 │       └── kotlin/
-│           └── GestionnaireDepensesTest.kt
+│           ├── Depense.kt
+│           ├── GestionnaireDepenses.kt
+│           ├── GestionnaireDepensesGUI.kt
+│           └── Main.kt
 ├── .gitignore
 ├── build.gradle.kts
 ├── gradle.properties
