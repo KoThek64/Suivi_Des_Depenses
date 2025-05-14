@@ -80,13 +80,12 @@ class GestionnaireDepensesGUI : Application() {
         val btnAjouter = Button("Ajouter une dépense").apply {
             prefWidth = 160.0
             style = """
-                |-fx-background-color: #4CAF50;
-                |-fx-text-fill: white;
-                |-fx-font-weight: bold;
-                |-fx-padding: 10px;
-                |-fx-background-radius: 5px;
-                |"""
-                .trimMargin()
+                -fx-background-color: #4CAF50;
+                -fx-text-fill: white;
+                -fx-font-weight: bold;
+                -fx-padding: 10px;
+                -fx-background-radius: 5px;
+                """
             setOnMouseEntered {
                 style += "-fx-opacity: 0.9;"
             }
