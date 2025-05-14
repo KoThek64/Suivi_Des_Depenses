@@ -51,6 +51,8 @@ class GestionnaireDepensesGUI : Application() {
         }
 
         stage.title = "Gestionnaire des dépenses"
+        stage.minWidth = 800.0
+        stage.minHeight = 600.0
 
         val montantCol = TableColumn<Depense, Number>("Montant")
         montantCol.setCellValueFactory { SimpleDoubleProperty(it.value.montant) }
