@@ -1,6 +1,6 @@
 # 💸 Suivi Des Dépenses
 
-Application mobile développée en Kotlin permettant de suivre et visualiser ses dépenses au quotidien. Idéale pour gérer un budget personnel de manière simple, ergonomique et efficace.
+Application développée en Kotlin permettant de suivre et visualiser ses dépenses au quotidien. Idéale pour gérer un budget personnel de manière simple, ergonomique et efficace.
 
 ---
 
@@ -43,7 +43,9 @@ Application mobile développée en Kotlin permettant de suivre et visualiser ses
 
 ## 🛠️ Technologies utilisées
 
-- **Langage :** Kotlin
+- **Langage :** Kotlin - 2.1.10
+- **Java SDK :** JDK 23 (jvmToolchain)
+- **JavaFX :** 24.0.1
 - **Architecture :** MVVM
 - **Build tool :** Gradle (Kotlin DSL)
 
@@ -95,7 +97,7 @@ Suivi_Des_Depenses/
 
 ## 🧑‍💻 Auteur
 
-Développé par **Mattys Lachaise** dans le cadre de d'un projet personnel.
+Développé par **Mattys Lachaise** dans le cadre d'un projet personnel.
 
 ---
 
