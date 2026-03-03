@@ -1,97 +1,122 @@
 # 💸 Suivi Des Dépenses
 
-Application développée en Kotlin permettant de suivre et visualiser ses dépenses au quotidien. Idéale pour gérer un budget personnel de manière simple, ergonomique et efficace.
+> Application Kotlin de suivi et de visualisation de dépenses personnelles, disponible en version terminal et en version GUI JavaFX.
+
+---
+
+## 🚀 Fonctionnalités
+
+- 🧾 **Ajout et suppression** de dépenses (montant, catégorie, date)
+- 📅 **Tri par date** au format `jj/mm/aaaa`
+- 🔍 **Filtrage et totaux** par catégorie
+- 💾 **Sauvegarde locale** via fichiers CSV (import & export)
+- 🖥️ **Double interface** : terminal (CLI) et fenêtre graphique (JavaFX)
+- ✅ **Validation des données** : montant, date et catégorie vérifiés à la saisie
 
 ---
 
 ## 🖼️ Aperçu de l'application
 
----
-
 ### Version Terminal
-#### Screen 1
-![Capture d'écran 1](assets/screenshot1.png)
-#### Screen 2
-![Capture d'écran 2](assets/screenshot2.png)
-#### Screen 3
-![Capture d'écran 2](assets/screenshot3.png)
+| Screen 1 | Screen 2 | Screen 3 |
+|----------|----------|----------|
+| ![](assets/screenshot1.png) | ![](assets/screenshot2.png) | ![](assets/screenshot3.png) |
 
----
+### Version Application (JavaFX)
+| Screen 1 | Screen 2 | Screen 3 |
+|----------|----------|----------|
+| ![](assets/screenshot4.png) | ![](assets/screenshot5.png) | ![](assets/screenshot6.png) |
 
-### Version Application
-#### Screen 1
-![Capture d'écran 1](assets/screenshot4.png)  
-#### Screen 2
-![Capture d'écran 2](assets/screenshot5.png)
-#### Screen 3
-![Capture d'écran 1](assets/screenshot6.png)
-#### Screen 4
-![Capture d'écran 1](assets/screenshot7.png)
-#### Screen 5
-![Capture d'écran 1](assets/screenshot8.png)
+| Screen 4 | Screen 5 |
+|----------|----------|
+| ![](assets/screenshot7.png) | ![](assets/screenshot8.png) |
 
----
 
-## 🚀 Fonctionnalités principales
+### 📂 Catégories disponibles
 
-- 🧾 Ajout et modification de dépenses
-- 📅 Tri par dates (jj/mm/yyyy)
-- 🔍 Filtrage par catégories
-- 💾 Sauvegarde locale des données
-
----
-
-## 🛠️ Technologies utilisées
-
-- **Langage :** Kotlin - 2.1.10
-- **Java SDK :** JDK 23 (jvmToolchain)
-- **JavaFX :** 24.0.1
-- **Architecture :** MVVM
-- **Build tool :** Gradle (Kotlin DSL)
+| # | Catégorie |
+|---|-----------|
+| 1 | Logement |
+| 2 | Alimentation / Restaurant |
+| 3 | Achat / Shopping |
+| 4 | Voiture / Transport |
+| 5 | Retrait / Chèque / Virement |
+| 6 | Loisirs / Sorties |
+| 7 | Abonnement |
+| 8 | Frais bancaires |
+| 9 | Esthétique / Soins |
+| 10 | Impôts / Taxes |
+| 11 | Santé |
+| 12 | Scolarité / Enfants |
+| 13 | Divers |
 
 ---
 
 ## 📦 Installation & Lancement
 
-1. Clonez le dépôt :
+### Prérequis
+
+- [IntelliJ IDEA](https://www.jetbrains.com/idea/) (Community ou Ultimate)
+- JDK 23+
+
+### Étapes
+
+1. **Cloner le dépôt**
    ```bash
    git clone https://github.com/KoThek64/Suivi_Des_Depenses.git
-2. Ouvrez le projet dans IntelliJ IDEA.
+   ```
 
-3. Sélectionnez le fichier GestionnaireDepensesGUIKt ou le MainKt en haut à droite de l'écran avant de lancer
+2. **Ouvrir le projet** dans IntelliJ IDEA.
 
-4. Cliquez sur Run ▶️ pour lancer l’application, elle s'affichera soit dans le terminal si vous sélectionnez MainKt, soit dans une nouvelle fenêtre si vous avez selectionné GestionnaireDepensesGUIKt.
+3. **Sélectionner le point d'entrée** en haut à droite avant de lancer :
+   - `MainKt` → lance la **version terminal** (CLI)
+   - `GestionnaireDepensesGUIKt` → lance la **version graphique** (JavaFX)
+
+4. **Cliquer sur Run ▶️** pour démarrer l'application.
+
+> **Note :** Gradle téléchargera automatiquement les dépendances au premier lancement.
 
 ---
 
 ## 📁 Structure du projet
 
-```bash
+```
 Suivi_Des_Depenses/
-├── .gradle/
-├── .idea/
-├── .kotlin/
-├── assets/
-│   ├── screenshot1.png
-│   ├── screenshot2.png
-│   └── ...
-├── build/
-├── gradle/
+├── assets/                         # Captures d'écran (screenshot1-8.png)
+├── gradle/                         # Gradle wrapper
 ├── src/
 │   └── main/
 │       └── kotlin/
-│           ├── Depense.kt
-│           ├── GestionnaireDepenses.kt
-│           ├── GestionnaireDepensesGUI.kt
-│           └── Main.kt
+│           ├── Depense.kt          # Modèle de données (montant, catégorie, date)
+│           ├── GestionnaireDepenses.kt     # Logique métier (ajout, suppression, filtrage, CSV)
+│           ├── GestionnaireDepensesGUI.kt  # Interface graphique JavaFX
+│           └── Main.kt             # Interface terminal (CLI)
+├── build.gradle.kts                # Configuration Gradle (Kotlin DSL)
+├── settings.gradle.kts             # Nom du projet et dépôts
+├── gradle.properties               # Propriétés Gradle
+├── gradlew / gradlew.bat           # Scripts Gradle wrapper
 ├── .gitignore
-├── build.gradle.kts
-├── gradle.properties
-├── gradlew
-├── gradlew.bat
-├── README.me
-└── settings.gradle.kts
+└── LICENSE
 ```
+
+### Rôle des fichiers sources
+
+| Fichier | Description |
+|---------|-------------|
+| `Depense.kt` | Data class représentant une dépense avec montant, catégorie et date |
+| `GestionnaireDepenses.kt` | Cœur du projet : gestion des dépenses, calculs, import/export CSV |
+| `Main.kt` | Interface en ligne de commande avec menu numéroté |
+| `GestionnaireDepensesGUI.kt` | Interface JavaFX : tableau de bord, dialogues, boutons stylisés |
+
+## 🛠️ Technologies utilisées
+
+| Technologie | Version |
+|-------------|---------|
+| Kotlin | 2.1.10 |
+| Java SDK | JDK 23 (jvmToolchain) |
+| JavaFX | 24.0.1 |
+| Gradle (Kotlin DSL) | 8.10 |
+| Architecture | MVVM |
 
 ---
 
@@ -103,6 +128,6 @@ Développé par **Mattys Lachaise** dans le cadre d'un projet personnel.
 
 ## 📃 Licence
 
-Ce projet est open-source sous licence MIT. Vous pouvez l'utiliser, le modifier et le partager librement.
+Ce projet est distribué sous licence **MIT**. Vous êtes libre de l'utiliser, le modifier et le redistribuer.
 
 ---
